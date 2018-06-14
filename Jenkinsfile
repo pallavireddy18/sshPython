@@ -31,7 +31,7 @@ pipeline {
                 emailext ( 
 		       subject: "Job Build", 
 		       body: "Job Build Success.${env.JOB_NAME} [${env.BUILD_NUMBER}]",
-		       to: "pallavireddy.s18995@gmail.com"
+		       to: "somireddypallavi@gmail.com,pallavireddy.s18995@gmail.com"
 		     )
 		    }
 
@@ -41,7 +41,7 @@ pipeline {
 			emailext ( 
 		       subject: "Job Build", 
 		       body: "Job Build Success.${env.JOB_NAME} [${env.BUILD_NUMBER}]",
-		       to: "pallavireddy.s18995@gmail.com"
+		       to: "somireddypallavi@gmail.com,pallavireddy.s18995@gmail.com"
 		     )
 		     }
 
