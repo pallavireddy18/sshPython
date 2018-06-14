@@ -55,7 +55,7 @@ pipeline {
                   <h1 style="color:blue;"> CONSOLE LOG OUTPUT</h1>
                   <pre>${BUILD_LOG, maxLines=8000, escapeHtml=true}</pre>
                   </body>
-                  </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline ', to: 'pallavireddy.s18995@gmail.com'
+                  </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline ', to: 'pallavireddy.s18995@gmail.com,kingshukbedi@gmail.com'
 
                 }
 
@@ -88,7 +88,7 @@ pipeline {
 		     }
                   <pre>${BUILD_LOG, maxLines=8000, escapeHtml=true}</pre>
                   </body>
-                 </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline', to: 'pallavireddy.s18995@gmail.com'
+                 </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline', to: 'pallavireddy.s18995@gmail.com,kingshukbedi@gmail.com'
 
         }
     } 
