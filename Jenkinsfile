@@ -91,5 +91,5 @@ pipeline {
                  </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline', to: 'pallavireddy.s18995@gmail.com'
 
         }
-        
+    } 
     }
