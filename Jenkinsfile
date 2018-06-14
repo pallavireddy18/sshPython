@@ -28,22 +28,67 @@ pipeline {
           }
     post {
             success{
-                emailext ( 
-		       subject: "Job Build", 
-		       body: "Job Build Success.${env.JOB_NAME} [${env.BUILD_NUMBER}]",
-		       to: "somireddypallavi@gmail.com,pallavireddy.s18995@gmail.com"
-		     )
-		    }
-
                 
+                emailext  attachmentsPattern: '', body: '''<html>
+                <body>
+                <h1 style="color:blue;"> BUILD SUCCESSFULL </h1>
+                <table>
+                        
+                        <tr>
+                            <td >Jenkins  URL</td>
+                            <td>:</td>
+                            <td >$JENKINS_URL</td>
+                        </tr>
+                        <tr>
+                            <td >Job Name</td>
+                            <td>:</td>
+                            <td >$JOB_NAME</td>
+                        </tr>
+                        <tr>
+                            <td >Build Number</td>
+                            <td>:</td>
+                            <td >$BUILD_NUMBER</td>
+                        </tr>
+                        
+                        
+		</table>
+                  <h1 style="color:pink;"> CONSOLE LOG OUTPUT</h1>
+                  <pre>${BUILD_LOG, maxLines=8000, escapeHtml=true}</pre>
+                  </body>
+                  </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline ', to: 'pallavireddy.s18995@gmail.com'
+
+                }
 
                  failure{
-			emailext ( 
-		       subject: "Job Build", 
-		       body: "Job Build Success.${env.JOB_NAME} [${env.BUILD_NUMBER}]",
-		       to: "somireddypallavi@gmail.com,pallavireddy.s18995@gmail.com"
-		     )
+
+                     emailext  attachmentsPattern: '', body: '''<html>
+                  <body>
+                  <h1 style="color:red;"> BUILD FAILED </h1>
+                     <table>
+                        
+                        <tr>
+                            <td >Jenkins  URL</td>
+                            <td>:</td>
+                            <td >$JENKINS_URL</td>
+                        </tr>
+                        <tr>
+                            <td >Job Name</td>
+                            <td>:</td>
+                            <td >$JOB_NAME</td>
+                        </tr>
+                        <tr>
+                            <td >Build Number</td>
+                            <td>:</td>
+                            <td >$BUILD_NUMBER</td>
+                        </tr>
+                        
+                        
+		</table>
+                  <h1 style="color:pink;"> CONSOLE LOG OUTPUT</h1>
 		     }
+                  <pre>${BUILD_LOG, maxLines=8000, escapeHtml=true}</pre>
+                  </body>
+                 </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline', to: 'pallavireddy.s18995@gmail.com'
 
         }
         
