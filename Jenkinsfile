@@ -1,27 +1,31 @@
 pipeline {
-    agent any
+    agent { node { label 'linux_node' } }
     
     stages {
         stage('code-deploy') {
             
             environment 
             { 
-                SHELL=/bin/sh
+                SHELL='/bin/sh'
         
             }
         
             steps{
             
-            checkout([$class: 'GitSCM', doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [url: 'https://github.com/kingshuk111/shell-script.git','https://github.com/kingshuk111/python.git']]) 
-            sh """#!/bin/bash -xel
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'pyfiles']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7af48099-1db5-4eb9-9e1d-ffcc3d371f9f', url: 'https://github.com/kingshuk111/python.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7af48099-1db5-4eb9-9e1d-ffcc3d371f9f', url: 'https://github.com/kingshuk111/shell-script.git']]])
             
-            echo "**************************************Deployment Starts *************************************************"
-            
-            echo "**************************************Deployment Ends ***************************************************"
+	    sh """#!/bin/bash
+            pwd
+            cd pyfiles
+            ls -lrt
+            cd ..
+            cp pyfiles/output.py output.py
+            sh script.sh
             """
             }
           }
-    
+          }
     post {
             success{
                 emailext ( 
