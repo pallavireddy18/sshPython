@@ -12,8 +12,8 @@ pipeline {
         
             steps{
             
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'pyfiles']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7af48099-1db5-4eb9-9e1d-ffcc3d371f9f', url: 'https://github.com/kingshuk111/python.git']]])
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7af48099-1db5-4eb9-9e1d-ffcc3d371f9f', url: 'https://github.com/kingshuk111/shell-script.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'pyfiles']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '8423e81a-49ac-4729-8b0e-f4ab417b955b', url: 'https://github.com/kingshuk111/python.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '8423e81a-49ac-4729-8b0e-f4ab417b955b', url: 'https://github.com/kingshuk111/shell-script.git']]])
             
 	    sh """#!/bin/bash
             pwd
@@ -55,7 +55,7 @@ pipeline {
                   <h1 style="color:blue;"> CONSOLE LOG OUTPUT</h1>
                   <pre>${BUILD_LOG, maxLines=8000, escapeHtml=true}</pre>
                   </body>
-                  </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline ', to: 'pallavireddy.s18995@gmail.com,kingshukbedi@gmail.com'
+                  </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline ', to: 'pallavireddy.s18995@gmail.com'
 
                 }
 
@@ -88,7 +88,7 @@ pipeline {
 		     }
                   <pre>${BUILD_LOG, maxLines=8000, escapeHtml=true}</pre>
                   </body>
-                 </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline', to: 'pallavireddy.s18995@gmail.com,kingshukbedi@gmail.com'
+                 </html>''', mimeType: 'text/html', subject: 'core.deploy pipeline', to: 'pallavireddy.s18995@gmail.com'
 
         }
     } 
