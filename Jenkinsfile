@@ -12,8 +12,8 @@ pipeline {
         
             steps{
             
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'pyfiles']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '8423e81a-49ac-4729-8b0e-f4ab417b955b', url: 'https://github.com/kingshuk111/python.git']]])
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '8423e81a-49ac-4729-8b0e-f4ab417b955b', url: 'https://github.com/kingshuk111/shell-script.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'pyfiles']], submoduleCfg: [], userRemoteConfigs: [url: 'https://github.com/kingshuk111/python.git']])
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [url: 'https://github.com/kingshuk111/shell-script.git']])
             
 	    sh """#!/bin/bash
             pwd
